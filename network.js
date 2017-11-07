@@ -124,4 +124,4 @@ function normalNetwork() {
         .attr("y2", function(d) { return d.target.y; });
 	
   }
-};//normalNetwork
+}
