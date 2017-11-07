@@ -8,11 +8,11 @@ var margin = {left: 0, top: 0, right: 0, bottom: 0},
 
 			
 var svg = d3.select("#chart").append("svg")
-			.attr("width", (width + margin.left + margin.right))
-			.attr("height", (height + margin.top + margin.bottom));
+	.attr("width", width)
+    	.attr("height", height);
 			
 var wrapper = svg.append("g")
-			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
       
 ///////////////////////////////////////////////////////////////////////////
 /////////////////////////// Initialize force //////////////////////////////
