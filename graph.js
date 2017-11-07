@@ -2,7 +2,7 @@
 //////////////////// Set up and initiate svg containers ///////////////////
 ///////////////////////////////////////////////////////////////////////////
 
-var margin = {left: 30, top: 20, right: 20, bottom: 20},
+var margin = {left: 50, top: 50, right: 50, bottom: 50},
 	width = 800 - margin.left - margin.right,
 	height = 700 - margin.top - margin.bottom;
 
@@ -11,7 +11,7 @@ var svg = d3.select("#chart").append("svg")
 			.attr("width", (width + margin.left + margin.right))
 			.attr("height", (height + margin.top + margin.bottom));
 			
-var wrapper = svg.append("g").attr("class", "chordWrapper")
+var wrapper = svg.append("g")
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
       
 ///////////////////////////////////////////////////////////////////////////
