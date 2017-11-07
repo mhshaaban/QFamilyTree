@@ -37,29 +37,14 @@ var svg = d3.select("#chart").append("svg")
 //////////////////////////// Initialize Tooltip ///////////////////////////
 ///////////////////////////////////////////////////////////////////////////
   
-	var showToolTip = function (d){
-		//Define and show the tooltip
-		$(this).popover({
-			placement: 'auto top',
-			container: 'body',
-			trigger: 'manual',
-			viewport:'#tooltip',
-			html : true,
-			content: function() { 
-				return "<span style='font-size: 11px; text-align: center;'>" + d.name + "</span>"; }
-		});
-		
-		
-		$(this).popover('show');
-		
-	};
-	
-	var hideToolTip = function(){
-		$('.popover').each(function() {
-			$(this).remove();
-		}); 
-	};  
-  
+	var tip = d3.tip()
+  		.attr('class', 'd3-tip')
+  		.offset([-10, 0])
+  		.html(function(d) {
+    		return "<strong>Person:</strong> <span style='color:red'>" + d.name + "</span>";
+  		}) 
+  	
+	svg.call(tip);
 ///////////////////////////////////////////////////////////////////////////
 /////////////////////////// Initialize containers /////////////////////////
 ///////////////////////////////////////////////////////////////////////////	
@@ -99,10 +84,10 @@ var svg = d3.select("#chart").append("svg")
 	
 	node.append("circle")
 	.attr("id", function(d) { return d.id; })
-	.on("mouseover",showToolTip)
-	.on("mouseout",hideToolTip)
         .style("fill", function(d) { return color(d.group); })
-        .attr("r", nodeRadius);
+        .attr("r", nodeRadius)
+	.on('mouseover', tip.show)
+      	.on('mouseout', tip.hide);
 	
      var nodeLabel = node.append("text")
 		.attr("dx", 12)
