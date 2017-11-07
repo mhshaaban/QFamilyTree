@@ -51,7 +51,7 @@ var wrapper = svg.append("g").attr("class", "chordWrapper")
 
     //Create the link lines
     link = linkWrapper.selectAll(".link")
-        .data(plinks)
+        .data(links)
         .enter().append("line")
         .attr("class", "link");
 
