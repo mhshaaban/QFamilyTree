@@ -34,6 +34,33 @@ var wrapper = svg.append("g").attr("class", "chordWrapper")
       .links(links)
 
 ///////////////////////////////////////////////////////////////////////////
+//////////////////////////// Initialize Tooltip ///////////////////////////
+///////////////////////////////////////////////////////////////////////////
+  
+	var showToolTip = function (d){
+		//Define and show the tooltip
+		$(this).popover({
+			placement: 'auto top',
+			container: 'body',
+			trigger: 'manual',
+			viewport:'#tooltip',
+			html : true,
+			content: function() { 
+				return "<span style='font-size: 11px; text-align: center;'>" + d.name + "</span>"; }
+		});
+		
+		
+		$(this).popover('show');
+		
+	};
+	
+	var hideToolTip = function(){
+		$('.popover').each(function() {
+			$(this).remove();
+		}); 
+	};  
+  
+///////////////////////////////////////////////////////////////////////////
 /////////////////////////// Initialize containers /////////////////////////
 ///////////////////////////////////////////////////////////////////////////	
 
