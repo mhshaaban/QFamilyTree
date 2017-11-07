@@ -2,7 +2,7 @@
 //////////////////// Set up and initiate svg containers ///////////////////
 ///////////////////////////////////////////////////////////////////////////
 
-var margin = {top: 0, right: 0, bottom: 0, left: 0};
+var margin = {top: 50, right: 50, bottom: 50, left: 50};
 
 var width = 800 - margin.left - margin.right;
 var height = 800 - margin.top - margin.bottom;
