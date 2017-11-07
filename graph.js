@@ -2,9 +2,8 @@
 //////////////////// Set up and initiate svg containers ///////////////////
 ///////////////////////////////////////////////////////////////////////////
 
-var margin = {left: 0, top: 0, right: 0, bottom: 0},
-	width = 800 - margin.left - margin.right,
-	height = 700 - margin.top - margin.bottom;
+var width = 800;
+var height = 700;
 
 			
 var svg = d3.select("#chart").append("svg")
