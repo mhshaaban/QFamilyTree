@@ -28,6 +28,15 @@ var svg = d3.select("#chart").append("svg")
   var graphNodes = (networkData.nodes);
   var graphLinks = (networkData.links);
   
+  var linkedByIndex = {};
+	graphLinks.forEach(function(d) {
+        linkedByIndex[d.source.index + "," + d.target.index] = 1;
+    });
+
+  function isConnected(a, b) {
+        return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
+    }
+
   var force = d3.layout.force()
       .size([width, height])
       .nodes(graphNodes)
@@ -84,8 +93,11 @@ var svg = d3.select("#chart").append("svg")
         .data(graphNodes)
         .enter().append("g")
 	.attr("class", "node")
-    	.attr("cx", function(d) { return d.x = Math.max(nodeRadius, Math.min(width - nodeRadius, d.x)); })
-        .attr("cy", function(d) { return d.y = Math.max(nodeRadius, Math.min(height - nodeRadius, d.y)); })
+    	.attr('transform', function(d) { 
+    	d.x = Math.max(nodeRadius, Math.min(width - nodeRadius, d.x));
+    	d.y = Math.max(nodeRadius, Math.min(height - nodeRadius, d.y)); 
+    	return 'translate(' + d.x + ',' + d.y + ')'; 
+    	})
 	.call(force.drag);
 	
 	node.append("circle")
