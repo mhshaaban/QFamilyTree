@@ -2,15 +2,15 @@
 //////////////////// Set up and initiate svg containers ///////////////////
 ///////////////////////////////////////////////////////////////////////////
 
-var margin = {top: 20, right: 20, bottom: 20, left: 20};
+var margin = {top: 40, right: 20, bottom: 40, left: 20};
 
 var width = 800 - margin.left - margin.right;
-var height = 700 - margin.top - margin.bottom;;
+var height = 800 - margin.top - margin.bottom;
 
 			
 var svg = d3.select("#chart").append("svg")
-	.attr("width", width)
-    	.attr("height", height)
+	.attr("width", width + margin.left + margin.right)
+	.attr("height", height + margin.top + margin.bottom)
 	.append("g")
 	.attr("transform", "translate(" + (margin.left) + "," + (margin.top) + ")");
 
