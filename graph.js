@@ -25,13 +25,13 @@ var wrapper = svg.append("g")
   var nodeRadius = 6;
   var networkData = JSON.parse(JSON.stringify(graph));
   
-  var nodes = (networkData.nodes);
-  var links = (networkData.links);
+  var graphNodes = (networkData.nodes);
+  var graphLinks = (networkData.links);
   
   var force = d3.layout.force()
       .size([width, height])
-      .nodes(nodes)
-      .links(links)
+      .nodes(graphNodes)
+      .links(graphLinks)
 
 ///////////////////////////////////////////////////////////////////////////
 //////////////////////////// Initialize Tooltip ///////////////////////////
@@ -77,8 +77,8 @@ var wrapper = svg.append("g")
         .attr("class", "linkWrapper");
 
     //Create the link lines
-    link = linkWrapper.selectAll(".link")
-        .data(links)
+   var link = linkWrapper.selectAll(".link")
+        .data(graphLinks)
         .enter().append("line")
         .attr("class", "link");
 
@@ -91,8 +91,8 @@ var wrapper = svg.append("g")
         .attr("class", "nodeWrapper");
 
     //Create the node circles - first a wrapper for each node
-    node = nodeWrapper.selectAll(".node")
-        .data(nodes)
+    var node = nodeWrapper.selectAll(".node")
+        .data(graphNodes)
         .enter().append("g")
 	.attr("class", "node")
 	.call(force.drag);
@@ -104,7 +104,7 @@ var wrapper = svg.append("g")
         .style("fill", function(d) { return color(d.group); })
         .attr("r", nodeRadius);
 	
-	nodeLabel = node.append("text")
+     var nodeLabel = node.append("text")
 		.attr("dx", 12)
       		.attr("dy", ".35em")
                 .style("fill", "#000000")
