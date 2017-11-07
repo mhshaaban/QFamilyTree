@@ -27,15 +27,6 @@ var svg = d3.select("#chart").append("svg")
   
   var graphNodes = (networkData.nodes);
   var graphLinks = (networkData.links);
-  
-  var linkedByIndex = {};
-	graphLinks.forEach(function(d) {
-        linkedByIndex[d.source.index + "," + d.target.index] = 1;
-    });
-
-  function isConnected(a, b) {
-        return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
-    }
 
   var force = d3.layout.force()
       .size([width, height])
@@ -108,6 +99,15 @@ var svg = d3.select("#chart").append("svg")
                 .style("fill", "#000000")
                 .text(function(d) {  return d.name;  })
 		.style("opacity", 0);
+
+  var linkedByIndex = {};
+	graphLinks.forEach(function(d) {
+        linkedByIndex[d.source.index + "," + d.target.index] = 1;
+    });
+
+  function isConnected(a, b) {
+        return linkedByIndex[a.index + "," + b.index] || linkedByIndex[b.index + "," + a.index] || a.index == b.index;
+    }
 
 function normalNetwork() {
     node.attr('transform', function(d) { 
