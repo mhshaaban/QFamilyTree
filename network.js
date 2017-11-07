@@ -35,7 +35,8 @@ var svg = d3.select("#chart").append("svg")
       .gravity(.05)
       .charge(-60)
       .linkDistance(40)
-      .on("tick", normalNetwork);
+      .on("tick", normalNetwork)
+      .start();
 
 ///////////////////////////////////////////////////////////////////////////
 //////////////////////////// Initialize Tooltip ///////////////////////////
