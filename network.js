@@ -99,7 +99,7 @@ var svg = d3.select("#chart").append("svg")
       		.attr("dy", ".35em")
                 .style("fill", "#000000")
                 .text(function(d) {  return d.name;  })
-		.style("opacity", 0);
+		.style("opacity", 0.8);
 
   var linkedByIndex = {};
 	graphLinks.forEach(function(d) {
