@@ -68,7 +68,7 @@ var wrapper = svg.append("g").attr("class", "chordWrapper")
         .data(nodes)
         .enter().append("g")
 	.attr("class", "node")
-	.call(force.drag);
+	.call(drag);
 	
 	node.append("circle")
 	.attr("id", function(d) { return d.id; })
