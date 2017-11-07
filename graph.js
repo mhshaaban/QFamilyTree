@@ -6,11 +6,9 @@ var width = 800;
 var height = 700;
 
 			
-var networkSVG = d3.select("#chart").append("svg")
+var svg = d3.select("#chart").append("g")
 	.attr("width", width)
     	.attr("height", height);
-
-var svg = networkSVG.append("g");
 
 ///////////////////////////////////////////////////////////////////////////
 /////////////////////////// Initialize force //////////////////////////////
