@@ -78,11 +78,7 @@ var svg = d3.select("#chart").append("svg")
    var link = linkWrapper.selectAll(".link")
         .data(graphLinks)
         .enter().append("line")
-        .attr("class", "link")
-   	.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+        .attr("class", "link");
 
 ///////////////////////////////////////////////////////////////////////////
 //////////////////////////// Initialize Nodes /////////////////////////////
@@ -97,11 +93,6 @@ var svg = d3.select("#chart").append("svg")
         .data(graphNodes)
         .enter().append("g")
 	.attr("class", "node")
-        .attr('transform', function(d) { 
-    	d.x = Math.max(nodeRadius, Math.min(width - nodeRadius, d.x));
-    	d.y = Math.max(nodeRadius, Math.min(height - nodeRadius, d.y)); 
-    	return 'translate(' + d.x + ',' + d.y + ')'; 
-         })
 	.call(force.drag);
 
 	node.append("circle")
@@ -132,4 +123,5 @@ function normalNetwork() {
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
 	
-  };//normalNetwork
+  }
+};//normalNetwork
