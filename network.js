@@ -41,6 +41,10 @@ var svg = d3.select("#chart").append("svg")
       .size([width, height])
       .nodes(graphNodes)
       .links(graphLinks)
+      .gravity(.05)
+      .charge(-60)
+      .linkDistance(40)
+      .on("tick", normalNetwork);
 
 ///////////////////////////////////////////////////////////////////////////
 //////////////////////////// Initialize Tooltip ///////////////////////////
@@ -76,11 +80,6 @@ var svg = d3.select("#chart").append("svg")
         .enter().append("line")
         .attr("class", "link");
 
-   	link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
-
 ///////////////////////////////////////////////////////////////////////////
 //////////////////////////// Initialize Nodes /////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
@@ -96,12 +95,6 @@ var svg = d3.select("#chart").append("svg")
 	.attr("class", "node")
 	.call(force.drag);
 
-	node.attr('transform', function(d) { 
-    	d.x = Math.max(nodeRadius, Math.min(width - nodeRadius, d.x));
-    	d.y = Math.max(nodeRadius, Math.min(height - nodeRadius, d.y)); 
-    	return 'translate(' + d.x + ',' + d.y + ')'; 
-    	});
-	
 	node.append("circle")
 	.attr("id", function(d) { return d.id; })
         .style("fill", function(d) { return color(d.group); })
@@ -115,3 +108,19 @@ var svg = d3.select("#chart").append("svg")
                 .style("fill", "#000000")
                 .text(function(d) {  return d.name;  })
 		.style("opacity", 0);
+
+function normalNetwork() {
+    pt.orgTreeNetwork.node
+        .attr('transform', function(d) { 
+    	d.x = Math.max(nodeRadius, Math.min(width - nodeRadius, d.x));
+    	d.y = Math.max(nodeRadius, Math.min(height - nodeRadius, d.y)); 
+    	return 'translate(' + d.x + ',' + d.y + ')'; 
+    });
+
+    pt.orgTreeNetwork.link
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+	
+  };//normalNetwork
