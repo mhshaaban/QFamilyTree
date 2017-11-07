@@ -11,8 +11,7 @@ var svg = d3.select("#chart").append("svg")
 	.attr("width", width)
     	.attr("height", height);
 			
-var wrapper = svg.append("g")
-	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var wrapper = svg.append("g");
       
 ///////////////////////////////////////////////////////////////////////////
 /////////////////////////// Initialize force //////////////////////////////
