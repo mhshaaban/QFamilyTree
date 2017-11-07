@@ -3,8 +3,9 @@
 ///////////////////////////////////////////////////////////////////////////
 
 var margin = {left: 30, top: 20, right: 20, bottom: 20},
-	width = Math.min($("#chart").width(), 800) - margin.left - margin.right,
-	height = width*2/3;
+	width = 800 - margin.left - margin.right,
+	height = 700 - margin.top - margin.bottom;
+
 			
 var svg = d3.select("#graph").append("svg")
 			.attr("width", (width + margin.left + margin.right))
