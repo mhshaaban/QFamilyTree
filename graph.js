@@ -2,13 +2,17 @@
 //////////////////// Set up and initiate svg containers ///////////////////
 ///////////////////////////////////////////////////////////////////////////
 
+var margin = {top: 0, right: 0, bottom: 0, left: 0};
+
 var width = 800;
 var height = 700;
 
 			
-var svg = d3.select("#chart").append("g")
+var svg = d3.select("#chart").append("svg")
 	.attr("width", width)
-    	.attr("height", height);
+    	.attr("height", height)
+	.append("g")
+	.attr("transform", "translate(" + (margin.left) + "," + (margin.top) + ")");;
 
 ///////////////////////////////////////////////////////////////////////////
 /////////////////////////// Initialize force //////////////////////////////
