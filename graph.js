@@ -22,13 +22,13 @@ var wrapper = svg.append("g").attr("class", "chordWrapper")
 		.range(["#EFB605", "#E58903", "#E01A25", "#C20049", "#991C71", "#66489F", "#2074A0", "#10A66E", "#7EB852"])
 		.domain(["Non-Mamlūks","Awlād al-Nās","Ayyūbids","Early Mamlūks","Amirs", "Baybars","Qalāwūnids","Qalāwūnid Princes & Princesses","Qalāwūnid Royal Wives"]);
     
-  nodeRadius = 6;
-  networkData = JSON.parse(JSON.stringify(graph));
+  var nodeRadius = 6;
+  var networkData = JSON.parse(JSON.stringify(graph));
   
-  nodes = (networkData.nodes);
-  links = (networkData.links);
+  var nodes = (networkData.nodes);
+  var links = (networkData.links);
   
-  d3.layout.force()
+  var force = d3.layout.force()
       .size([width, height])
       .nodes(nodes)
       .links(links)
@@ -68,7 +68,7 @@ var wrapper = svg.append("g").attr("class", "chordWrapper")
         .data(nodes)
         .enter().append("g")
 	.attr("class", "node")
-	.call(drag);
+	.call(force.drag);
 	
 	node.append("circle")
 	.attr("id", function(d) { return d.id; })
